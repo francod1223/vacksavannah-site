@@ -79,18 +79,13 @@
   .book-card{position:sticky;top:96px;align-self:start;background:#fff;border:1px solid var(--line);border-radius:8px;padding:28px;box-shadow:0 14px 34px rgba(36,32,28,.08)}
   .book-card .price{font-size:30px;font-family:'Cormorant Garamond',serif}.book-card .price small{font-size:15px;color:var(--muted);font-family:'Inter'}
   .book-card .note{color:var(--muted);font-size:14px;margin:8px 0 20px}
-  .book-btn{display:block;width:100%;text-align:center;background:var(--green);color:#fff;border:0;padding:16px;border-radius:4px;font:inherit;font-size:13px;letter-spacing:.16em;text-transform:uppercase;cursor:pointer}
   .book-card .re{text-align:center;color:var(--muted);font-size:13px;margin-top:14px}
-  /* lightbox + bookframe */
+  #hostaway-calendar-widget{margin-top:4px}
+  /* lightbox */
   .lb{position:fixed;inset:0;z-index:70;display:none;background:rgba(20,16,12,.92);align-items:center;justify-content:center}
   .lb.open{display:flex}.lb img{max-width:88vw;max-height:86vh;border-radius:4px}
   .lb .x,.lb .nav-b{position:absolute;background:rgba(255,255,255,.14);color:#fff;border:0;width:48px;height:48px;border-radius:50%;font-size:22px;cursor:pointer}
   .lb .x{top:24px;right:28px}.lb .prev{left:26px;top:50%}.lb .next{right:26px;top:50%}.lb .count{position:absolute;bottom:24px;color:#fff;opacity:.8;font-size:14px}
-  .bookframe{position:fixed;inset:0;z-index:60;display:none;flex-direction:column;background:var(--ivory)}.bookframe.open{display:flex}
-  .bf-bar{height:58px;display:flex;align-items:center;gap:18px;padding:0 20px;background:var(--ink);color:#fff;flex:0 0 auto}
-  .bf-bar button{background:transparent;border:1px solid rgba(255,255,255,.5);color:#fff;padding:8px 16px;border-radius:2px;font:inherit;font-size:13px;cursor:pointer}
-  .bf-bar .bf-brand{font-family:'Cormorant Garamond',serif;font-size:20px;letter-spacing:.05em}
-  .bookframe iframe{flex:1;width:100%;border:0}
   @media(max-width:900px){.grid,.diff .grid4{grid-template-columns:repeat(2,1fr)}.story .row,.pp-body,.rev-grid{grid-template-columns:1fr}.gallery{grid-template-columns:1fr;grid-template-rows:none;height:auto}.g-main{height:280px}.g-s{height:150px}nav .links{display:none}.book-card{position:static}}
   @media(max-width:600px){.grid{grid-template-columns:1fr}.search .f{border-right:0;border-bottom:1px solid var(--line)}}
 </style></head><body>
@@ -143,8 +138,8 @@ Positive: Everything. 2 parking spots in a city with some pricey 24 hour garages
       </div>
       <aside class="book-card">
         <div class="price">$189 <small>/ night</small></div>
-        <p class="note">Pick your dates on the next step to see your total. Free self check-in.</p>
-        <button class="book-btn" onclick="openBooking()">Check availability &amp; book</button>
+        <p class="note">Select your dates below to see your total — then book instantly. Free self check-in.</p>
+        <div id="hostaway-calendar-widget"></div>
         <p class="re">★ 4.8 · 276 reviews · Instant confirmation</p>
       </aside>
     </div>
@@ -154,14 +149,25 @@ Positive: Everything. 2 parking spots in a city with some pricey 24 hour garages
     <div class="links"><a href="https://www.instagram.com/vacksavannah" target="_blank" rel="noopener">Instagram</a><a href="../savannah.html">Explore Savannah</a><a href="../index.html">Home</a></div>
   </div><p class="muted" style="margin-top:30px;font-size:12px">© 2026 Vack Savannah. In partnership with Verdant House. Bookings powered by HostAway.</p></div></footer>
   <div class="lb" id="lb"><button class="x nav-b" onclick="closeLb()">✕</button><button class="prev nav-b" onclick="lbStep(-1)">‹</button><img id="lbImg" src=""><button class="next nav-b" onclick="lbStep(1)">›</button><div class="count" id="lbCount"></div></div>
-  <div class="bookframe" id="bf"><div class="bf-bar"><button onclick="closeBooking()">← Back</button><span class="bf-brand">Vack Savannah</span></div><iframe id="bfi" src="about:blank" title="Book your stay"></iframe></div>
 <script>
-  const PHOTOS=["https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/16731-73411-3JwXczIxd--F--09zi9XQbllSEpKnSrBRS--PwMbhq37X8-5e69c13b6f412","https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/16731-73411-1z4rOTX77V-u3Ng9zyzTTL6N9Hc5E3QDpYrW-41ZzF0-5e69dc6a042b2","https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/16731-73411-xoBab8Ykf-4CPtLjrBuzKQf6poxJIsvOjswTsljSgP4-5e69dc3f84456","https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/16731-73411-9y71myKkfXfC5VAXE4008kv0--4q2jBoHbkko5bz8buw-5e69dc43d09c5","https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/16731-73411-ZldA3Vzuxznzr8p9ubwsVx5ZJ91eve1H0b4bp8zQoyQ-5e69c054e6af9","https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/16731-73411-LE3EaeXQ-5CvaXQvpW9pPxREUfKm3VIDkclmf3XlcWY-5e69dc1d9304a","https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/16731-73411-Myz08hhzV4iyhCRv1yTtSsxgW3Qc68aksYlwC60ainM-5e69dc164061b","https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/16731-73411-4kLHAw--w-bWZdWUV8Pv3QKyOiQ6Am-yfb7EYCLbA35g-5e69c11bc3b04","https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/16731-73411-L9h74OMIN2oaRQIhn8NxTJGhdihrkAaNuny16kfFGbg-5e69c04b7941d","https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/16731-73411-S1Tj243mWezj9AtDMv--iNfBWOonpYbSDEW0dTGA--hqE-5e69c0aa8a7b4","https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/16731-73411-QYg26XGtt7uaMSiwXUFFcB8lBauqfzr5DMLOpL5jPmA-5e69dc5a3068e","https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/16731-73411-0sBVG6iauVYPo417TkpwF0Al6CYG89AftjNmrWQmjmU-5e69dc6ba46d7","https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/16731-73411-KVItwEwxDBGsQhtAIm1FAjkpfwBkBVN5ASKVXq--LH5U-5e69c04534107","https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/16731-73411-CoukBUNgPZAJTOHtwW-RFDRwe63jRegJcGZuxYKn1Zg-5e69c003e8617","https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/16731-73411-dIvOHqSVjXH8r5YGPaoLzoa6Jy--l-ZlvQ962QFpJ7HA-5e69dc4dc60a2","https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/16731-73411-0HQ4AENxC1----37pnJIt-xMz84gCszrz3--TpcBJZtRhc-5e69c01fc8023","https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/16731-73411-QhZqXKIZAViSqeTLx4S-pgG5WPM--NBXNkEFIPMWFwUI-5e69dc682cc67","https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/16731-73411-FdE0oteBBT8nRgM0-vKns--vXAuSK5rppEkuTTtHE2kk-5e69c00d0ebe7","https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/16731-73411-Ln0KIsuFaIGIRRxrWnyT4TmQW0hvwgREoI--HbnpQwxE-5e69bffb70ffb","https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/16731-73411-DN5XaWiOXkQNQHDyXkXMIQaNl--WQ5rJxJCeE9wcXx2E-5e69c103e27e6","https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/16731-73411-mmWhp6c--adV---DDHcMfsiMT0hieZIxX--dEZ--T37jgac-5e69dc314637a","https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/16731-73411-0a7VTJUfiRv-a8kMUotm0GcTSrM5XkwupyUbYBqzQeM-5e69dc72c5e4b","https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/16731-73411-bEnyRyBLHmXgNvaXKtqFrwHhy0y5EKQ7e3jX--ow0kEE-5e69c0dc40d74","https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/16731-73411-FKBcdYew9nZ8A3CX-Xd7RmfNqoULhAtsoHzmeXTOmFo-5e69dc520293a"], BOOK="https://rethink.holidayfuture.com/listings/73411"; let li=0;
+  const PHOTOS=["https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/16731-73411-3JwXczIxd--F--09zi9XQbllSEpKnSrBRS--PwMbhq37X8-5e69c13b6f412","https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/16731-73411-1z4rOTX77V-u3Ng9zyzTTL6N9Hc5E3QDpYrW-41ZzF0-5e69dc6a042b2","https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/16731-73411-xoBab8Ykf-4CPtLjrBuzKQf6poxJIsvOjswTsljSgP4-5e69dc3f84456","https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/16731-73411-9y71myKkfXfC5VAXE4008kv0--4q2jBoHbkko5bz8buw-5e69dc43d09c5","https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/16731-73411-ZldA3Vzuxznzr8p9ubwsVx5ZJ91eve1H0b4bp8zQoyQ-5e69c054e6af9","https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/16731-73411-LE3EaeXQ-5CvaXQvpW9pPxREUfKm3VIDkclmf3XlcWY-5e69dc1d9304a","https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/16731-73411-Myz08hhzV4iyhCRv1yTtSsxgW3Qc68aksYlwC60ainM-5e69dc164061b","https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/16731-73411-4kLHAw--w-bWZdWUV8Pv3QKyOiQ6Am-yfb7EYCLbA35g-5e69c11bc3b04","https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/16731-73411-L9h74OMIN2oaRQIhn8NxTJGhdihrkAaNuny16kfFGbg-5e69c04b7941d","https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/16731-73411-S1Tj243mWezj9AtDMv--iNfBWOonpYbSDEW0dTGA--hqE-5e69c0aa8a7b4","https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/16731-73411-QYg26XGtt7uaMSiwXUFFcB8lBauqfzr5DMLOpL5jPmA-5e69dc5a3068e","https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/16731-73411-0sBVG6iauVYPo417TkpwF0Al6CYG89AftjNmrWQmjmU-5e69dc6ba46d7","https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/16731-73411-KVItwEwxDBGsQhtAIm1FAjkpfwBkBVN5ASKVXq--LH5U-5e69c04534107","https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/16731-73411-CoukBUNgPZAJTOHtwW-RFDRwe63jRegJcGZuxYKn1Zg-5e69c003e8617","https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/16731-73411-dIvOHqSVjXH8r5YGPaoLzoa6Jy--l-ZlvQ962QFpJ7HA-5e69dc4dc60a2","https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/16731-73411-0HQ4AENxC1----37pnJIt-xMz84gCszrz3--TpcBJZtRhc-5e69c01fc8023","https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/16731-73411-QhZqXKIZAViSqeTLx4S-pgG5WPM--NBXNkEFIPMWFwUI-5e69dc682cc67","https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/16731-73411-FdE0oteBBT8nRgM0-vKns--vXAuSK5rppEkuTTtHE2kk-5e69c00d0ebe7","https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/16731-73411-Ln0KIsuFaIGIRRxrWnyT4TmQW0hvwgREoI--HbnpQwxE-5e69bffb70ffb","https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/16731-73411-DN5XaWiOXkQNQHDyXkXMIQaNl--WQ5rJxJCeE9wcXx2E-5e69c103e27e6","https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/16731-73411-mmWhp6c--adV---DDHcMfsiMT0hieZIxX--dEZ--T37jgac-5e69dc314637a","https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/16731-73411-0a7VTJUfiRv-a8kMUotm0GcTSrM5XkwupyUbYBqzQeM-5e69dc72c5e4b","https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/16731-73411-bEnyRyBLHmXgNvaXKtqFrwHhy0y5EKQ7e3jX--ow0kEE-5e69c0dc40d74","https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/16731-73411-FKBcdYew9nZ8A3CX-Xd7RmfNqoULhAtsoHzmeXTOmFo-5e69dc520293a"]; let li=0;
   function openLb(i){li=i;show();document.getElementById('lb').classList.add('open');document.body.style.overflow='hidden';}
   function closeLb(){document.getElementById('lb').classList.remove('open');document.body.style.overflow='';}
   function lbStep(n){li=(li+n+PHOTOS.length)%PHOTOS.length;show();}
   function show(){document.getElementById('lbImg').src=PHOTOS[li];document.getElementById('lbCount').textContent=(li+1)+' / '+PHOTOS.length;}
-  function openBooking(){document.getElementById('bfi').src=BOOK;document.getElementById('bf').classList.add('open');document.body.style.overflow='hidden';}
-  function closeBooking(){document.getElementById('bf').classList.remove('open');document.getElementById('bfi').src='about:blank';document.body.style.overflow='';}
-  document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeLb();closeBooking();}if(document.getElementById('lb').classList.contains('open')){if(e.key==='ArrowLeft')lbStep(-1);if(e.key==='ArrowRight')lbStep(1);}});
+  document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeLb();}if(document.getElementById('lb').classList.contains('open')){if(e.key==='ArrowLeft')lbStep(-1);if(e.key==='ArrowRight')lbStep(1);}});
+</script>
+<script src="https://d2q3n06xhbi0am.cloudfront.net/calendar.js"></script>
+<script>
+  window.hostawayCalendarWidget({
+    baseUrl: 'https://rethink.holidayfuture.com/',
+    listingId: 73411,
+    numberOfMonths: 1,
+    openInNewTab: false,
+    font: 'Inter',
+    rounded: true,
+    button: { action: 'checkout', text: 'Book now' },
+    clearButtonText: 'Clear dates',
+    color: { mainColor: '#33473C', frameColor: '#e4ddd0', textColor: '#24201C' },
+  });
 </script></body></html>
