@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://vacksavannah.com/</loc><priority>1.0</priority></url>
-  <url><loc>https://vacksavannah.com/savannah.html</loc><priority>0.7</priority></url>
+  <url><loc>https://vacksavannah.com/</loc></url>
+  <url><loc>https://vacksavannah.com/savannah.html</loc></url>
+  <url><loc>https://vacksavannah.com/homes/236-oglethorpe-st-b.html</loc></url>
+  <url><loc>https://vacksavannah.com/homes/236-oglethorpe-st-a.html</loc></url>
+  <url><loc>https://vacksavannah.com/homes/236-oglethorpe-a-b.html</loc></url>
+  <url><loc>https://vacksavannah.com/homes/renovated-historic-home-by-forsyth-park-4br-with-a-common-ar.html</loc></url>
+  <url><loc>https://vacksavannah.com/homes/comfortable-escape-2-bed-in-historic-downtown-savannah.html</loc></url>
+  <url><loc>https://vacksavannah.com/homes/downtown-savannah-oasis.html</loc></url>
+  <url><loc>https://vacksavannah.com/homes/huge-6-bed-5-bath-historic-savannah-home.html</loc></url>
+  <url><loc>https://vacksavannah.com/homes/beautiful-3bed-townhome-in-historic-downtown-savannah.html</loc></url>
+  <url><loc>https://vacksavannah.com/homes/107-e-waldburg.html</loc></url>
 </urlset>

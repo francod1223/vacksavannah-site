@@ -1,159 +1,145 @@
-<!doctype html>
-<html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
+<!doctype html><html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Explore Savannah — Neighborhoods, Food & Sights | Vack Savannah</title>
 <meta name="description" content="A local guide to Historic Downtown Savannah — the best restaurants, coffee, historic sights, Forsyth Park, River Street, Tybee Island, and how to get around."/>
-<link rel="canonical" href="https://vacksavannah.com/savannah.html"/>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
-<style>
+<link rel="canonical" href="https://vacksavannah.com/savannah.html"/><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet"><style>
   :root{ --ivory:#FAF6EF; --ink:#24201C; --muted:#6d655b; --green:#33473C; --gold:#B0894F; --line:#e4ddd0; }
-  *{ box-sizing:border-box; margin:0; padding:0; }
-  body{ background:var(--ivory); color:var(--ink); font-family:'Inter',system-ui,sans-serif; font-weight:300; line-height:1.6; }
-  h1,h2,h3{ font-family:'Cormorant Garamond',Georgia,serif; font-weight:500; letter-spacing:.01em; }
-  .eyebrow{ font-family:'Inter'; font-size:12px; letter-spacing:.28em; text-transform:uppercase; color:var(--gold); font-weight:500; }
-  a{ color:inherit; text-decoration:none; } img{ max-width:100%; display:block; }
-  .wrap{ max-width:1180px; margin:0 auto; padding:0 32px; }
-  nav{ position:absolute; top:0; left:0; right:0; z-index:5; display:flex; align-items:center; justify-content:space-between; padding:28px 40px; }
-  nav.solid{ position:sticky; background:var(--ivory); border-bottom:1px solid var(--line); }
-  nav .brand{ font-family:'Cormorant Garamond',serif; font-size:26px; color:#fff; letter-spacing:.06em; }
-  nav.solid .brand,nav.solid .links a{ color:var(--ink); }
-  nav .links{ display:flex; gap:30px; align-items:center; }
-  nav .links a{ color:#fff; font-size:13px; letter-spacing:.16em; text-transform:uppercase; opacity:.94; }
-  nav .book{ border:1px solid rgba(255,255,255,.6); padding:10px 22px; border-radius:2px; }
-  nav.solid .book{ border-color:var(--green); }
-  .hero{ position:relative; height:92vh; min-height:600px; color:#fff; display:flex; align-items:center; overflow:hidden; background:#14100c; }
-  .hero-bg{ position:absolute; inset:0; z-index:0; }
-  .hero-slide{ position:absolute; inset:0; background-size:cover; background-position:center; opacity:0; will-change:opacity,transform; animation:heroKen 28s infinite cubic-bezier(.4,0,.2,1); }
-  .hero-slide.s0{animation-delay:0s} .hero-slide.s1{animation-delay:7s} .hero-slide.s2{animation-delay:14s} .hero-slide.s3{animation-delay:21s}
-  .hero-slide.s1,.hero-slide.s3{ transform-origin:top right; }
-  .hero-overlay{ position:absolute; inset:0; z-index:1; background:linear-gradient(180deg,rgba(20,16,12,.52),rgba(20,16,12,.22) 42%,rgba(20,16,12,.7)); }
+  *{box-sizing:border-box;margin:0;padding:0} body{background:var(--ivory);color:var(--ink);font-family:'Inter',system-ui,sans-serif;font-weight:300;line-height:1.6}
+  h1,h2,h3{font-family:'Cormorant Garamond',Georgia,serif;font-weight:500;letter-spacing:.01em} img{max-width:100%;display:block}
+  .eyebrow{font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);font-weight:500}
+  a{color:inherit;text-decoration:none} .wrap{max-width:1180px;margin:0 auto;padding:0 32px}
+  nav{position:absolute;top:0;left:0;right:0;z-index:5;display:flex;align-items:center;justify-content:space-between;padding:26px 40px}
+  nav.solid{position:sticky;background:var(--ivory);border-bottom:1px solid var(--line)}
+  nav .brandwrap{display:flex;align-items:center;gap:22px}
+  nav .back{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:#fff;border:1px solid rgba(255,255,255,.5);padding:8px 16px;border-radius:2px}
+  nav.solid .back{color:var(--ink);border-color:var(--line)}
+  nav .brand{font-family:'Cormorant Garamond',serif;font-size:26px;color:#fff;letter-spacing:.06em}
+  nav.solid .brand,nav.solid .links a{color:var(--ink)}
+  nav .links{display:flex;gap:28px;align-items:center}
+  nav .links a{color:#fff;font-size:13px;letter-spacing:.16em;text-transform:uppercase;opacity:.94}
+  nav .book{border:1px solid rgba(255,255,255,.6);padding:10px 22px;border-radius:2px}
+  nav.solid .book{border-color:var(--green)}
+  /* hero */
+  .hero{position:relative;height:92vh;min-height:600px;color:#fff;display:flex;align-items:center;overflow:hidden;background:#14100c}
+  .hero-bg{position:absolute;inset:0;z-index:0}
+  .hero-slide{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;will-change:opacity,transform;animation:heroKen 28s infinite cubic-bezier(.4,0,.2,1)}
+  .hero-slide.s0{animation-delay:0s}.hero-slide.s1{animation-delay:7s}.hero-slide.s2{animation-delay:14s}.hero-slide.s3{animation-delay:21s}
+  .hero-slide.s1,.hero-slide.s3{transform-origin:top right}
+  .hero-overlay{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(20,16,12,.52),rgba(20,16,12,.22) 42%,rgba(20,16,12,.7))}
   @keyframes heroKen{0%{opacity:0;transform:scale(1.03)}4%{opacity:1}21%{opacity:1}25%{opacity:0;transform:scale(1.15)}100%{opacity:0;transform:scale(1.15)}}
   @media(prefers-reduced-motion:reduce){.hero-slide{animation:none}.hero-slide.s0{opacity:1}}
-  .hero .wrap{ width:100%; position:relative; z-index:2; }
-  .hero h1{ font-size:clamp(46px,7vw,88px); line-height:1.02; max-width:14ch; margin:18px 0 20px; }
-  .hero p.sub{ font-size:19px; font-weight:300; max-width:44ch; opacity:.95; }
-  .search{ margin-top:38px; display:inline-flex; flex-wrap:wrap; background:rgba(255,255,255,.96); color:var(--ink); border-radius:3px; overflow:hidden; box-shadow:0 20px 50px rgba(0,0,0,.25); }
-  .search .f{ padding:16px 22px; border-right:1px solid var(--line); min-width:150px; }
-  .search .f label{ display:block; font-size:10px; letter-spacing:.18em; text-transform:uppercase; color:var(--muted); margin-bottom:4px; }
-  .search .f input,.search .f select{ border:0; background:transparent; font-family:inherit; font-size:15px; color:var(--ink); width:100%; outline:none; }
-  .search .go{ background:var(--green); color:#fff; border:0; padding:0 34px; font:inherit; font-size:13px; letter-spacing:.16em; text-transform:uppercase; cursor:pointer; }
-  .intro{ text-align:center; padding:110px 0 30px; }
-  .intro h2{ font-size:clamp(30px,4vw,46px); max-width:20ch; margin:14px auto 20px; }
-  .intro p{ max-width:56ch; margin:0 auto; color:var(--muted); font-size:17px; }
-  .homes{ padding:60px 0 90px; }
-  .homes .head{ margin-bottom:34px; }
-  .homes h2{ font-size:40px; }
-  .grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:34px 30px; }
-  .card{ background:#fff; border:1px solid var(--line); border-radius:4px; overflow:hidden; cursor:pointer; transition:transform .3s ease, box-shadow .3s ease; }
-  .card:hover{ transform:translateY(-4px); box-shadow:0 22px 40px rgba(36,32,28,.12); }
-  .card-img{ height:230px; background:#ddd center/cover no-repeat; position:relative; }
-  .card-img .rating{ position:absolute; top:14px; right:14px; background:rgba(255,255,255,.94); font-size:12px; padding:5px 10px; border-radius:2px; }
-  .card-body{ padding:22px 24px 26px; }
-  .card-body h3{ font-size:23px; line-height:1.15; margin-bottom:8px; }
-  .card-body .meta{ color:var(--muted); font-size:14px; }
-  .card-body .view{ display:inline-block; margin-top:16px; font-size:12px; letter-spacing:.18em; text-transform:uppercase; color:var(--green); }
-  /* founders */
-  .story{ padding:100px 0; border-top:1px solid var(--line); }
-  .story .row{ display:grid; grid-template-columns:0.85fr 1.15fr; gap:64px; align-items:center; }
-  .story .portrait{ border-radius:4px; overflow:hidden; aspect-ratio:4/5; background:#e7e0d3 center/cover; box-shadow:0 20px 44px rgba(36,32,28,.14); }
-  .story h2{ font-size:clamp(30px,3.6vw,44px); margin:14px 0 20px; }
-  .story p{ color:var(--muted); font-size:17px; margin-bottom:16px; }
-  .story .sign{ font-family:'Cormorant Garamond',serif; font-size:22px; color:var(--ink); margin-top:8px; }
-  /* verdant */
-  .partner{ background:var(--green); color:#f3efe6; padding:66px 0; }
-  .partner .row{ display:flex; align-items:center; justify-content:space-between; gap:40px; flex-wrap:wrap; }
-  .partner .eyebrow{ color:var(--gold); }
-  .partner h3{ font-size:30px; color:#fff; margin:8px 0 10px; max-width:20ch; }
-  .partner p{ opacity:.86; max-width:52ch; font-size:15px; }
-  .partner a.btn{ border:1px solid rgba(255,255,255,.6); padding:13px 26px; border-radius:2px; font-size:12px; letter-spacing:.16em; text-transform:uppercase; white-space:nowrap; }
-  /* difference */
-  .diff{ padding:100px 0; }
-  .diff .grid4{ display:grid; grid-template-columns:repeat(4,1fr); gap:40px; margin-top:44px; }
-  .diff h2{ font-size:42px; } .diff .item h3{ font-size:23px; margin-bottom:10px; } .diff .item p{ font-size:15px; color:var(--muted); }
-  footer{ padding:70px 0 44px; border-top:1px solid var(--line); }
-  footer .row{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:24px; align-items:flex-end; }
-  footer .brand{ font-family:'Cormorant Garamond',serif; font-size:30px; letter-spacing:.05em; }
-  footer .muted{ color:var(--muted); font-size:14px; }
-  footer .links a{ margin-left:24px; font-size:13px; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); }
-  /* modal */
-  .modal{ position:fixed; inset:0; z-index:50; display:none; background:rgba(20,16,12,.6); backdrop-filter:blur(3px); }
-  .modal.open{ display:block; }
-  .modal-box{ position:absolute; top:4vh; left:50%; transform:translateX(-50%); width:min(1000px,94vw); max-height:92vh; overflow-y:auto; background:var(--ivory); border-radius:6px; }
-  .modal-close{ position:sticky; top:0; float:right; margin:14px; z-index:2; background:#fff; border:1px solid var(--line); width:38px; height:38px; border-radius:50%; font-size:18px; cursor:pointer; }
-  .m-hero{ height:360px; background:#ddd center/cover; }
-  .m-thumbs{ display:flex; gap:8px; padding:12px 28px 0; overflow-x:auto; }
-  .m-thumbs img{ width:92px; height:64px; object-fit:cover; border-radius:3px; cursor:pointer; opacity:.7; border:2px solid transparent; }
-  .m-thumbs img.on{ opacity:1; border-color:var(--gold); }
-  .m-body{ padding:22px 28px 34px; }
-  .m-body h2{ font-size:34px; } .m-meta{ color:var(--muted); margin:6px 0 18px; }
-  .m-desc{ white-space:pre-line; color:#453f38; font-size:15.5px; }
-  .m-amen{ display:flex; flex-wrap:wrap; gap:8px; margin:20px 0; }
-  .m-amen span{ font-size:12.5px; border:1px solid var(--line); background:#fff; padding:6px 12px; border-radius:20px; color:var(--muted); }
-  .m-book{ display:inline-block; background:var(--green); color:#fff; padding:15px 32px; border-radius:3px; font-size:13px; letter-spacing:.16em; text-transform:uppercase; margin-top:8px; }
-  @media(max-width:900px){ .grid{grid-template-columns:repeat(2,1fr)} .diff .grid4{grid-template-columns:repeat(2,1fr)} .story .row{grid-template-columns:1fr} nav .links{display:none} }
-  @media(max-width:600px){ .grid{grid-template-columns:1fr} .search .f{border-right:0;border-bottom:1px solid var(--line)} }
+  .hero .wrap{width:100%;position:relative;z-index:2}
+  .hero h1{font-size:clamp(46px,7vw,88px);line-height:1.02;max-width:14ch;margin:18px 0 20px}
+  .hero p.sub{font-size:19px;max-width:44ch;opacity:.95}
+  .search{margin-top:38px;display:inline-flex;flex-wrap:wrap;background:rgba(255,255,255,.96);color:var(--ink);border-radius:3px;overflow:hidden;box-shadow:0 20px 50px rgba(0,0,0,.25)}
+  .search .f{padding:16px 22px;border-right:1px solid var(--line);min-width:150px}
+  .search .f label{display:block;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+  .search .f input,.search .f select{border:0;background:transparent;font-family:inherit;font-size:15px;color:var(--ink);width:100%;outline:none}
+  .search .go{background:var(--green);color:#fff;border:0;padding:0 34px;font:inherit;font-size:13px;letter-spacing:.16em;text-transform:uppercase;cursor:pointer}
+  .intro{text-align:center;padding:110px 0 30px}.intro h2{font-size:clamp(30px,4vw,46px);max-width:20ch;margin:14px auto 20px}.intro p{max-width:56ch;margin:0 auto;color:var(--muted);font-size:17px}
+  .homes{padding:60px 0 90px}.homes .head{margin-bottom:34px}.homes h2{font-size:40px}
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:34px 30px}
+  .card{background:#fff;border:1px solid var(--line);border-radius:4px;overflow:hidden;transition:transform .3s,box-shadow .3s}
+  .card:hover{transform:translateY(-4px);box-shadow:0 22px 40px rgba(36,32,28,.12)}
+  .card-img{height:230px;background:#ddd center/cover no-repeat;position:relative}
+  .card-img .rating{position:absolute;top:14px;right:14px;background:rgba(255,255,255,.94);font-size:12px;padding:5px 10px;border-radius:2px}
+  .card-body{padding:22px 24px 26px}.card-body h3{font-size:23px;line-height:1.15;margin-bottom:8px}.card-body .meta{color:var(--muted);font-size:14px}
+  .card-body .price{margin-top:12px;font-size:15px}.card-body .price b{font-weight:500}
+  .card-body .view{display:inline-block;margin-top:14px;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--green)}
+  .story{padding:100px 0;border-top:1px solid var(--line)}.story .row{display:grid;grid-template-columns:.85fr 1.15fr;gap:64px;align-items:center}
+  .story .portrait{border-radius:4px;overflow:hidden;aspect-ratio:4/5;background:#e7e0d3 center/cover;box-shadow:0 20px 44px rgba(36,32,28,.14)}
+  .story h2{font-size:clamp(30px,3.6vw,44px);margin:14px 0 20px}.story p{color:var(--muted);font-size:17px;margin-bottom:16px}.story .sign{font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--ink)}
+  .partner{background:var(--green);color:#f3efe6;padding:66px 0}.partner .row{display:flex;align-items:center;justify-content:space-between;gap:40px;flex-wrap:wrap}
+  .partner .eyebrow{color:var(--gold)}.partner h3{font-size:30px;color:#fff;margin:8px 0 10px;max-width:20ch}.partner p{opacity:.86;max-width:52ch;font-size:15px}
+  .partner a.btn{border:1px solid rgba(255,255,255,.6);padding:13px 26px;border-radius:2px;font-size:12px;letter-spacing:.16em;text-transform:uppercase;white-space:nowrap}
+  .diff{padding:100px 0}.diff .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:40px;margin-top:44px}
+  .diff h2{font-size:42px}.diff .item h3{font-size:23px;margin-bottom:10px}.diff .item p{font-size:15px;color:var(--muted)}
+  footer{padding:70px 0 44px;border-top:1px solid var(--line)}footer .row{display:flex;justify-content:space-between;flex-wrap:wrap;gap:24px;align-items:flex-end}
+  footer .brand{font-family:'Cormorant Garamond',serif;font-size:30px;letter-spacing:.05em}footer .muted{color:var(--muted);font-size:14px}
+  footer .links a{margin-left:24px;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+  /* property page */
+  .pp{padding-top:26px}
+  .gallery{display:grid;grid-template-columns:1.4fr 1fr;grid-template-rows:1fr 1fr;gap:10px;height:480px;border-radius:6px;overflow:hidden}
+  .g-main{grid-row:1/3;background:#ddd center/cover;cursor:pointer}
+  .g-s{background:#ddd center/cover;cursor:pointer;position:relative}
+  .g-more{position:absolute;inset:0;background:rgba(20,16,12,.45);color:#fff;display:flex;align-items:center;justify-content:center;font-size:15px;letter-spacing:.05em}
+  .pp-body{display:grid;grid-template-columns:1.7fr .9fr;gap:56px;padding:44px 0 90px}
+  .pp h1{font-size:clamp(30px,4vw,46px);line-height:1.05}
+  .pp .meta{color:var(--muted);margin:10px 0 6px;font-size:16px}
+  .pp .rate{color:var(--ink);font-size:15px;margin-bottom:24px}
+  .pp .desc{white-space:pre-line;color:#413b34;font-size:16px;border-top:1px solid var(--line);padding-top:26px;margin-top:8px}
+  .pp h2{font-size:30px;margin:40px 0 16px}
+  .amen{display:flex;flex-wrap:wrap;gap:10px}.amen span{font-size:13px;border:1px solid var(--line);background:#fff;padding:8px 14px;border-radius:20px;color:var(--muted)}
+  .rev-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+  .rev{background:#fff;border:1px solid var(--line);border-radius:5px;padding:22px 24px}
+  .rev .top{display:flex;justify-content:space-between;font-size:14px;color:var(--muted);margin-bottom:10px}.rev .top b{color:var(--ink);font-weight:500}
+  .rev p{font-size:14.5px;color:#453f38}
+  .book-card{position:sticky;top:96px;align-self:start;background:#fff;border:1px solid var(--line);border-radius:8px;padding:28px;box-shadow:0 14px 34px rgba(36,32,28,.08)}
+  .book-card .price{font-size:30px;font-family:'Cormorant Garamond',serif}.book-card .price small{font-size:15px;color:var(--muted);font-family:'Inter'}
+  .book-card .note{color:var(--muted);font-size:14px;margin:8px 0 20px}
+  .book-btn{display:block;width:100%;text-align:center;background:var(--green);color:#fff;border:0;padding:16px;border-radius:4px;font:inherit;font-size:13px;letter-spacing:.16em;text-transform:uppercase;cursor:pointer}
+  .book-card .re{text-align:center;color:var(--muted);font-size:13px;margin-top:14px}
+  /* lightbox + bookframe */
+  .lb{position:fixed;inset:0;z-index:70;display:none;background:rgba(20,16,12,.92);align-items:center;justify-content:center}
+  .lb.open{display:flex}.lb img{max-width:88vw;max-height:86vh;border-radius:4px}
+  .lb .x,.lb .nav-b{position:absolute;background:rgba(255,255,255,.14);color:#fff;border:0;width:48px;height:48px;border-radius:50%;font-size:22px;cursor:pointer}
+  .lb .x{top:24px;right:28px}.lb .prev{left:26px;top:50%}.lb .next{right:26px;top:50%}.lb .count{position:absolute;bottom:24px;color:#fff;opacity:.8;font-size:14px}
+  .bookframe{position:fixed;inset:0;z-index:60;display:none;flex-direction:column;background:var(--ivory)}.bookframe.open{display:flex}
+  .bf-bar{height:58px;display:flex;align-items:center;gap:18px;padding:0 20px;background:var(--ink);color:#fff;flex:0 0 auto}
+  .bf-bar button{background:transparent;border:1px solid rgba(255,255,255,.5);color:#fff;padding:8px 16px;border-radius:2px;font:inherit;font-size:13px;cursor:pointer}
+  .bf-bar .bf-brand{font-family:'Cormorant Garamond',serif;font-size:20px;letter-spacing:.05em}
+  .bookframe iframe{flex:1;width:100%;border:0}
+  @media(max-width:900px){.grid,.diff .grid4{grid-template-columns:repeat(2,1fr)}.story .row,.pp-body,.rev-grid{grid-template-columns:1fr}.gallery{grid-template-columns:1fr;grid-template-rows:none;height:auto}.g-main{height:280px}.g-s{height:150px}nav .links{display:none}.book-card{position:static}}
+  @media(max-width:600px){.grid{grid-template-columns:1fr}.search .f{border-right:0;border-bottom:1px solid var(--line)}}
 
-  .page-hero{ padding:150px 0 70px; text-align:center; border-bottom:1px solid var(--line); }
-  .page-hero h1{ font-size:clamp(40px,6vw,72px); }
-  .page-hero p{ color:var(--muted); max-width:56ch; margin:16px auto 0; font-size:18px; }
-  .guide{ padding:70px 0; } .guide h2{ font-size:34px; margin:44px 0 18px; }
-  .guide .cols{ display:grid; grid-template-columns:repeat(2,1fr); gap:16px 40px; }
-  .guide .item b{ font-family:'Cormorant Garamond',serif; font-size:20px; font-weight:600; }
-  .guide .item p{ color:var(--muted); font-size:15px; margin:2px 0 14px; }
-  .cta{ text-align:center; padding:80px 0 40px; } .cta a{ background:var(--green); color:#fff; padding:15px 34px; border-radius:3px; font-size:13px; letter-spacing:.16em; text-transform:uppercase; }
+  .page-hero{padding:150px 0 70px;text-align:center;border-bottom:1px solid var(--line)}.page-hero h1{font-size:clamp(40px,6vw,72px)}.page-hero p{color:var(--muted);max-width:56ch;margin:16px auto 0;font-size:18px}
+  .guide{padding:70px 0}.guide h2{font-size:34px;margin:44px 0 18px}.guide .cols{display:grid;grid-template-columns:repeat(2,1fr);gap:16px 40px}
+  .guide .item b{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600}.guide .item p{color:var(--muted);font-size:15px;margin:2px 0 14px}
+  .cta{text-align:center;padding:80px 0 40px}.cta a{background:var(--green);color:#fff;padding:15px 34px;border-radius:3px;font-size:13px;letter-spacing:.16em;text-transform:uppercase}
 </style></head><body>
   <nav class="solid">
-    <div class="brand">Vack&nbsp;Savannah</div>
+    <div class="brandwrap"><a class="back" href="index.html">← Back</a><div class="brand">Vack&nbsp;Savannah</div></div>
     <div class="links">
-      <a href="index.html#homes">Homes</a>
-      <a href="savannah.html">Explore Savannah</a>
-      <a href="index.html#story">Our Story</a>
+      <a href="../index.html#homes">Homes</a>
+      <a href="../savannah.html">Explore Savannah</a>
+      <a href="../index.html#story">Our Story</a>
       <a class="book" href="https://rethink.holidayfuture.com/" target="_blank" rel="noopener">Book a stay</a>
     </div></nav>
-  <section class="page-hero"><div class="wrap"><span class="eyebrow">The city</span>
-    <h1>Explore Savannah</h1>
+  <section class="page-hero"><div class="wrap"><span class="eyebrow">The city</span><h1>Explore Savannah</h1>
     <p>Our homes sit in the heart of the Historic District — here's the Savannah we'd send our own friends to.</p></div></section>
   <section class="guide wrap">
-    <h2>Where to eat</h2>
-    <div class="cols">
+    <h2>Where to eat</h2><div class="cols">
       <div class="item"><b>The Grey</b><p>Celebrated Southern dining in a restored Greyhound station.</p></div>
       <div class="item"><b>The Olde Pink House</b><p>Classic Savannah fine dining in an 18th-century mansion.</p></div>
       <div class="item"><b>Mrs. Wilkes' Dining Room</b><p>Legendary family-style Southern lunch (cash, worth the line).</p></div>
       <div class="item"><b>The Collins Quarter</b><p>Buzzy Australian-inspired brunch and coffee.</p></div>
       <div class="item"><b>Leopold's Ice Cream</b><p>A 100-year-old institution — don't skip it.</p></div>
-      <div class="item"><b>Zunzi's</b><p>Cult-favorite sandwiches, a short walk away.</p></div>
-    </div>
-    <h2>Coffee & mornings</h2>
-    <div class="cols">
+      <div class="item"><b>Zunzi's</b><p>Cult-favorite sandwiches, a short walk away.</p></div></div>
+    <h2>Coffee &amp; mornings</h2><div class="cols">
       <div class="item"><b>The Sentient Bean</b><p>Right on Forsyth Park — the local morning ritual.</p></div>
       <div class="item"><b>The Coffee Fox</b><p>Broughton Street favorite for a proper pour.</p></div>
       <div class="item"><b>Foxy Loxy Café</b><p>Tex-Mex café in a cozy historic house on Bull Street.</p></div>
-      <div class="item"><b>Gallery Espresso</b><p>Old-Savannah coffeehouse on Chippewa Square.</p></div>
-    </div>
-    <h2>What to see</h2>
-    <div class="cols">
+      <div class="item"><b>Gallery Espresso</b><p>Old-Savannah coffeehouse on Chippewa Square.</p></div></div>
+    <h2>What to see</h2><div class="cols">
       <div class="item"><b>Forsyth Park</b><p>The iconic fountain and green heart of downtown — steps from the homes.</p></div>
       <div class="item"><b>The 22 Squares</b><p>Savannah's famous oak-shaded garden squares, made for wandering.</p></div>
       <div class="item"><b>River Street</b><p>Cobblestone riverfront with shops, restaurants, and history.</p></div>
       <div class="item"><b>Bonaventure Cemetery</b><p>Hauntingly beautiful live oaks and Spanish moss.</p></div>
       <div class="item"><b>Wormsloe Historic Site</b><p>The unforgettable oak-lined avenue, a short drive out.</p></div>
-      <div class="item"><b>Tybee Island</b><p>Savannah's beach — about 25–40 minutes via US-80 E.</p></div>
-    </div>
-    <h2>Getting around</h2>
-    <div class="cols">
+      <div class="item"><b>Tybee Island</b><p>Savannah's beach — about 25–40 minutes via US-80 E.</p></div></div>
+    <h2>Getting around</h2><div class="cols">
       <div class="item"><b>On foot</b><p>The Historic District is wonderfully walkable — most everything is close.</p></div>
-      <div class="item"><b>Free DOT shuttle & ferry</b><p>Downtown loop shuttle plus a free ferry across the river.</p></div>
+      <div class="item"><b>Free DOT shuttle &amp; ferry</b><p>Downtown loop shuttle plus a free ferry across the river.</p></div>
       <div class="item"><b>To-go cups</b><p>Savannah allows open containers downtown — a local rite of passage.</p></div>
-      <div class="item"><b>Airport</b><p>Savannah/Hilton Head (SAV) is about 15–20 minutes away.</p></div>
-    </div>
-    <h2>Time your visit</h2>
-    <div class="cols">
+      <div class="item"><b>Airport</b><p>Savannah/Hilton Head (SAV) is about 15–20 minutes away.</p></div></div>
+    <h2>Time your visit</h2><div class="cols">
       <div class="item"><b>St. Patrick's Day (March)</b><p>One of the largest celebrations in the U.S. — book early.</p></div>
       <div class="item"><b>Savannah Music Festival (spring)</b><p>Weeks of concerts across the city.</p></div>
-      <div class="item"><b>Fall & the holidays</b><p>Mild weather, festive squares, and the SCAD Film Festival.</p></div>
-    </div>
+      <div class="item"><b>Fall &amp; the holidays</b><p>Mild weather, festive squares, and the SCAD Film Festival.</p></div></div>
   </section>
   <section class="cta"><a href="index.html#homes">Find your home in Savannah →</a></section>
-  <footer><div class="wrap"><div class="row"><div class="brand">Vack&nbsp;Savannah</div>
-    <div class="links"><a href="https://www.instagram.com/vacksavannah" target="_blank" rel="noopener">Instagram</a><a href="index.html">Home</a></div></div></div></footer>
+  <footer id="contact"><div class="wrap"><div class="row">
+    <div><div class="brand">Vack&nbsp;Savannah</div><p class="muted" style="margin-top:8px">Historic Downtown Savannah, GA · hello@vacksavannah.com</p></div>
+    <div class="links"><a href="https://www.instagram.com/vacksavannah" target="_blank" rel="noopener">Instagram</a><a href="savannah.html">Explore Savannah</a><a href="index.html">Home</a></div>
+  </div><p class="muted" style="margin-top:30px;font-size:12px">© 2026 Vack Savannah. In partnership with Verdant House. Bookings powered by HostAway.</p></div></footer>
 </body></html>
