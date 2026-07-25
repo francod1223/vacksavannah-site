@@ -33,11 +33,14 @@
   .hero .wrap{width:100%;position:relative;z-index:2}
   .hero h1{font-size:clamp(46px,7vw,88px);line-height:1.02;max-width:14ch;margin:18px 0 20px}
   .hero p.sub{font-size:19px;max-width:44ch;opacity:.95}
-  .search{margin-top:38px;display:inline-flex;flex-wrap:wrap;background:rgba(255,255,255,.96);color:var(--ink);border-radius:3px;overflow:hidden;box-shadow:0 20px 50px rgba(0,0,0,.25)}
-  .search .f{padding:16px 22px;border-right:1px solid var(--line);min-width:150px}
-  .search .f label{display:block;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
-  .search .f input,.search .f select{border:0;background:transparent;font-family:inherit;font-size:15px;color:var(--ink);width:100%;outline:none}
-  .search .go{background:var(--green);color:#fff;border:0;padding:0 34px;font:inherit;font-size:13px;letter-spacing:.16em;text-transform:uppercase;cursor:pointer}
+  .search{margin-top:38px;display:inline-flex;flex-wrap:wrap;background:rgba(255,255,255,.96);color:var(--ink);border-radius:3px;box-shadow:0 20px 50px rgba(0,0,0,.25)}
+  .search .f{padding:16px 20px;border-right:1px solid var(--line);min-width:118px}
+  .search .f-where{min-width:100px}
+  .search .f label{display:block;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:4px;white-space:nowrap}
+  .search .f input,.search .f select{border:0;background:transparent;font-family:inherit;font-size:15px;color:var(--ink);width:100%;outline:none;white-space:nowrap}
+  .search .f input[type=date]{min-width:128px}
+  .search .go{background:var(--green);color:#fff;border:0;padding:0 34px;font:inherit;font-size:13px;letter-spacing:.16em;text-transform:uppercase;cursor:pointer;border-radius:0 3px 3px 0}
+  @media(max-width:700px){.search{border-radius:8px}.search .f{border-right:0;border-bottom:1px solid var(--line);flex:1 1 45%}.search .go{width:100%;padding:16px;border-radius:0 0 8px 8px}}
   .search-note{margin-top:14px;color:#f3ead9;font-size:13.5px;letter-spacing:.02em}
   .filter-note{display:none;margin-top:10px;color:var(--gold);font-size:14px;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
   .intro{text-align:center;padding:110px 0 30px}.intro h2{font-size:clamp(30px,4vw,46px);max-width:20ch;margin:14px auto 20px}.intro p{max-width:56ch;margin:0 auto;color:var(--muted);font-size:17px}
@@ -74,8 +77,8 @@
   .pp .desc{white-space:pre-line;color:#413b34;font-size:16px;border-top:1px solid var(--line);padding-top:26px;margin-top:8px}
   .pp h2{font-size:30px;margin:40px 0 16px}
   .amen{display:flex;flex-wrap:wrap;gap:10px}.amen span{font-size:13px;border:1px solid var(--line);background:#fff;padding:8px 14px;border-radius:20px;color:var(--muted)}
-  .rev-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
-  .rev{background:#fff;border:1px solid var(--line);border-radius:5px;padding:22px 24px}
+  .rev-grid{column-count:2;column-gap:22px}
+  .rev{background:#fff;border:1px solid var(--line);border-radius:5px;padding:22px 24px;break-inside:avoid;margin-bottom:22px}
   .rev .top{display:flex;justify-content:space-between;font-size:14px;color:var(--muted);margin-bottom:10px}.rev .top b{color:var(--ink);font-weight:500}
   .rev p{font-size:14.5px;color:#453f38}
   .rev-more{margin-top:24px}
@@ -96,7 +99,7 @@
   .book-card .price{font-size:30px;font-family:'Cormorant Garamond',serif}.book-card .price small{font-size:15px;color:var(--muted);font-family:'Inter'}
   .book-card .note{color:var(--muted);font-size:14px;margin:8px 0 20px}
   .book-card .re{text-align:center;color:var(--muted);font-size:13px;margin-top:14px}
-  #hostaway-calendar-widget{margin-top:4px}
+  #hostaway-calendar-widget{margin:8px auto 0;max-width:330px}
   /* stack the widget's Clear / Book now buttons so they never overlap in the narrow card */
   #hostaway-calendar-widget [class*="ButtonContainer"]{flex-direction:column-reverse !important;gap:12px !important;align-items:stretch !important}
   #hostaway-calendar-widget [class*="ButtonContainer"]>*{width:100% !important;min-width:0 !important;margin:0 !important}
@@ -105,7 +108,7 @@
   .lb.open{display:flex}.lb img{max-width:88vw;max-height:86vh;border-radius:4px}
   .lb .x,.lb .nav-b{position:absolute;background:rgba(255,255,255,.14);color:#fff;border:0;width:48px;height:48px;border-radius:50%;font-size:22px;cursor:pointer}
   .lb .x{top:24px;right:28px}.lb .prev{left:26px;top:50%}.lb .next{right:26px;top:50%}.lb .count{position:absolute;bottom:24px;color:#fff;opacity:.8;font-size:14px}
-  @media(max-width:900px){.grid,.diff .grid4{grid-template-columns:repeat(2,1fr)}.story .row,.pp-body,.rev-grid{grid-template-columns:1fr}.gallery{grid-template-columns:1fr;grid-template-rows:none;height:auto}.g-main{height:280px}.g-s{height:150px}nav .links{display:none}.book-card{position:static}}
+  @media(max-width:900px){.grid,.diff .grid4{grid-template-columns:repeat(2,1fr)}.story .row,.pp-body{grid-template-columns:1fr}.rev-grid{column-count:1}.gallery{grid-template-columns:1fr;grid-template-rows:none;height:auto}.g-main{height:280px}.g-s{height:150px}nav .links{display:none}.book-card{position:static}}
   @media(max-width:600px){.grid{grid-template-columns:1fr}.search .f{border-right:0;border-bottom:1px solid var(--line)}}
 </style></head><body>
   <nav class="">
@@ -126,49 +129,51 @@
       <h1>Stay where Savannah's history lives.</h1>
       <p class="sub">A collection of beautifully restored homes in the heart of the Historic District — steps from Forsyth Park, the squares, and the river.</p>
       <form class="search" onsubmit="return findHomes(event)">
-        <div class="f"><label>Where</label><input value="Historic Downtown Savannah" readonly></div>
+        <div class="f f-where"><label>Where</label><input value="Savannah" readonly></div>
+        <div class="f"><label>Check-in</label><input type="date" id="hin"></div>
+        <div class="f"><label>Check-out</label><input type="date" id="hout"></div>
         <div class="f"><label>Guests</label><select id="hguests">
           <option value="1">1 guest</option><option value="2">2 guests</option><option value="4">4 guests</option><option value="6">6 guests</option><option value="8">8 guests</option><option value="10">10+ guests</option></select></div>
-        <button class="go" type="submit">Find homes</button>
+        <button class="go" type="submit">Search</button>
       </form>
-      <p class="search-note">Browse the collection below · pick your dates on any home to see the price and book.</p></div></header>
+      <p class="search-note">Search checks real-time availability across the collection — you'll stay right here.</p></div></header>
   <section class="intro"><div class="wrap"><span class="eyebrow">The collection</span><h2>Elegant homes, thoughtfully hosted.</h2>
     <p>Every Vack Savannah home is a restored piece of the city — original heart-pine floors, high ceilings, and modern comforts — cared for by a local team so your only job is to enjoy Savannah.</p></div></section>
   <section class="homes wrap" id="homes"><div class="head"><span class="eyebrow">Our homes</span><h2>Find your stay</h2><p id="filterNote" class="filter-note"></p></div>
     <div class="grid">
-      <a class="card" href="homes/236-oglethorpe-st-b.html" data-sleeps="8">
+      <a class="card" href="homes/236-oglethorpe-st-b.html" data-sleeps="8" data-slug="236-oglethorpe-st-b">
         <div class="card-img" style="background-image:url('https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/16731-73411-3JwXczIxd--F--09zi9XQbllSEpKnSrBRS--PwMbhq37X8-5e69c13b6f412')"><span class="rating">★ 4.8</span></div>
         <div class="card-body"><h3>236 Oglethorpe st B</h3><p class="meta">4 bd · 3 ba · sleeps 8</p><p class="price">from <b>$189</b> / night</p><span class="view">View home →</span></div>
       </a>
-      <a class="card" href="homes/236-oglethorpe-st-a.html" data-sleeps="10">
+      <a class="card" href="homes/236-oglethorpe-st-a.html" data-sleeps="10" data-slug="236-oglethorpe-st-a">
         <div class="card-img" style="background-image:url('https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/16731-73412-AQczezpB7GnRFgj--srwPOVkqRi8SYBHbdRyoFB1kvVU-5e69c00000086')"><span class="rating">★ 4.6</span></div>
         <div class="card-body"><h3>236 Oglethorpe st A</h3><p class="meta">5 bd · 5 ba · sleeps 10</p><p class="price">from <b>$198</b> / night</p><span class="view">View home →</span></div>
       </a>
-      <a class="card" href="homes/236-oglethorpe-a-b.html" data-sleeps="16">
+      <a class="card" href="homes/236-oglethorpe-a-b.html" data-sleeps="16" data-slug="236-oglethorpe-a-b">
         <div class="card-img" style="background-image:url('https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/16731-73413-1cb8XU7zDpVKLLLSwJM4vEaH-vbE-lW2hPtGxEfwBy8-5e69f836b91fd')"><span class="rating">★ 4.7</span></div>
         <div class="card-body"><h3>236 Oglethorpe A&amp;B</h3><p class="meta">9 bd · 7 ba · sleeps 16</p><p class="price">from <b>$380</b> / night</p><span class="view">View home →</span></div>
       </a>
-      <a class="card" href="homes/renovated-historic-home-by-forsyth-park-4br-with-a-common-ar.html" data-sleeps="6">
+      <a class="card" href="homes/renovated-historic-home-by-forsyth-park-4br-with-a-common-ar.html" data-sleeps="6" data-slug="renovated-historic-home-by-forsyth-park-4br-with-a-common-ar">
         <div class="card-img" style="background-image:url('https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/16731-76642-n230lRsB5--vymBs9MzPh6vN6H-81GGk2NKAYw1ufI9Q-6a6411dd604c6')"><span class="rating">★ 4.6</span></div>
         <div class="card-body"><h3>Renovated Historic Home by Forsyth Park - 4BR with a Common Area and 5 Baths + Porches</h3><p class="meta">5 bd · 5 ba · sleeps 6</p><p class="price">from <b>$206</b> / night</p><span class="view">View home →</span></div>
       </a>
-      <a class="card" href="homes/comfortable-escape-2-bed-in-historic-downtown-savannah.html" data-sleeps="4">
+      <a class="card" href="homes/comfortable-escape-2-bed-in-historic-downtown-savannah.html" data-sleeps="4" data-slug="comfortable-escape-2-bed-in-historic-downtown-savannah">
         <div class="card-img" style="background-image:url('https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/16731-56821---V01BkAqumyFof3H-xYLs45Psgu6le-iO--erv--Q8Y--8-6a641191995ee')"><span class="rating">★ 4.6</span></div>
         <div class="card-body"><h3>Comfortable Escape 2 Bed in Historic Downtown Savannah</h3><p class="meta">2 bd · 2 ba · sleeps 4</p><p class="price">from <b>$108</b> / night</p><span class="view">View home →</span></div>
       </a>
-      <a class="card" href="homes/downtown-savannah-oasis.html" data-sleeps="6">
+      <a class="card" href="homes/downtown-savannah-oasis.html" data-sleeps="6" data-slug="downtown-savannah-oasis">
         <div class="card-img" style="background-image:url('https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/16731-56820-O7CCl0VPT-E8M0kchneBDvFyIjnwiepYqyo6OSVWzfM-6a63fd4ce3f9a')"><span class="rating">★ 4.6</span></div>
         <div class="card-body"><h3>Downtown Savannah Oasis</h3><p class="meta">3 bd · 3 ba · sleeps 6</p><p class="price">from <b>$129</b> / night</p><span class="view">View home →</span></div>
       </a>
-      <a class="card" href="homes/huge-6-bed-5-bath-historic-savannah-home.html" data-sleeps="12">
+      <a class="card" href="homes/huge-6-bed-5-bath-historic-savannah-home.html" data-sleeps="12" data-slug="huge-6-bed-5-bath-historic-savannah-home">
         <div class="card-img" style="background-image:url('https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/16731-56822-CkdcVgKllozmUbrqtiUzrns--poUF0qTznsjd7M-Rkvs-5b44daadbaa1a')"><span class="rating">★ 4.5</span></div>
         <div class="card-body"><h3>Huge 6 Bed, 5 Bath Historic Savannah Home</h3><p class="meta">5 bd · 5 ba · sleeps 12</p><p class="price">from <b>$271</b> / night</p><span class="view">View home →</span></div>
       </a>
-      <a class="card" href="homes/beautiful-3bed-townhome-in-historic-downtown-savannah.html" data-sleeps="6">
+      <a class="card" href="homes/beautiful-3bed-townhome-in-historic-downtown-savannah.html" data-sleeps="6" data-slug="beautiful-3bed-townhome-in-historic-downtown-savannah">
         <div class="card-img" style="background-image:url('https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/16731-62053-ZXpM--LwaX41ntD07nEpMYKCZhVmRaDVz--PRnhSSn07E-6a64124d2a56b')"><span class="rating">★ 4.6</span></div>
         <div class="card-body"><h3>Beautiful 3Bed Townhome in Historic Downtown Savannah</h3><p class="meta">3 bd · 3 ba · sleeps 6</p><p class="price">from <b>$139</b> / night</p><span class="view">View home →</span></div>
       </a>
-      <a class="card" href="homes/107-e-waldburg.html" data-sleeps="10">
+      <a class="card" href="homes/107-e-waldburg.html" data-sleeps="10" data-slug="107-e-waldburg">
         <div class="card-img" style="background-image:url('https://hostaway-platform.s3.us-west-2.amazonaws.com/listing/16731-69073-l5uUPPvY--cmycf8BJI8DEM--nBRLUE45yB95WbUZhgQ-5dd6887614aff')"><span class="rating">★ 4.5</span></div>
         <div class="card-body"><h3>107 E Waldburg</h3><p class="meta">5 bd · 5 ba · sleeps 10</p><p class="price">from <b>$198</b> / night</p><span class="view">View home →</span></div>
       </a>
@@ -195,16 +200,28 @@
     <div class="links"><a href="https://www.instagram.com/vacksavannah" target="_blank" rel="noopener">Instagram</a><a href="savannah.html">Explore Savannah</a><a href="index.html">Home</a></div>
   </div><p class="muted" style="margin-top:30px;font-size:12px">© 2026 Vack Savannah. In partnership with Verdant House. Bookings powered by HostAway.</p></div></footer>
 <script>
+  const HOMES_AVAIL={"236-oglethorpe-st-b":[["2026-07-29","2026-07-31"],["2026-08-02","2026-08-06"],["2026-08-09","2026-08-13"],["2026-10-04","2026-10-07"],["2026-10-13","2026-10-16"],["2026-10-19","2026-10-22"],["2026-12-01","2026-12-04"]],"236-oglethorpe-st-a":[["2026-07-27","2026-07-31"],["2026-08-04","2026-08-05"],["2026-08-06","2026-08-13"],["2026-09-12","2026-09-18"],["2026-09-28","2026-09-29"],["2026-10-04","2026-10-07"],["2026-11-04","2026-11-08"],["2026-11-17","2026-11-21"]],"236-oglethorpe-a-b":[["2026-07-27","2026-07-31"],["2026-08-02","2026-08-13"],["2026-09-12","2026-09-18"],["2026-09-28","2026-09-29"],["2026-10-04","2026-10-07"],["2026-10-13","2026-10-16"],["2026-10-19","2026-10-22"],["2026-11-04","2026-11-08"],["2026-11-17","2026-11-21"],["2026-12-01","2026-12-04"]],"renovated-historic-home-by-forsyth-park-4br-with-a-common-ar":[["2026-07-25","2026-07-31"],["2026-08-02","2026-08-09"],["2026-08-11","2026-08-12"],["2026-08-17","2026-08-20"],["2026-08-24","2026-08-27"],["2026-08-29","2026-09-15"],["2026-09-18","2026-10-02"],["2026-10-04","2026-10-12"],["2026-10-15","2026-10-18"],["2026-10-27","2026-10-30"],["2026-11-01","2026-11-07"],["2026-11-13","2026-11-15"],["2026-11-16","2026-11-20"],["2027-01-19","2027-01-21"]],"comfortable-escape-2-bed-in-historic-downtown-savannah":[["2026-07-25","2026-07-26"],["2026-07-30","2026-08-02"],["2026-08-09","2026-08-13"],["2026-08-22","2026-08-26"],["2026-09-10","2026-09-14"],["2026-09-22","2026-09-25"],["2026-09-27","2026-10-06"],["2026-10-10","2026-10-13"],["2027-01-03","2027-01-05"]],"downtown-savannah-oasis":[["2026-07-25","2026-07-31"],["2026-08-01","2026-08-07"],["2026-08-10","2026-08-20"],["2026-09-02","2026-09-03"],["2026-09-06","2026-09-08"],["2026-09-10","2026-09-19"],["2026-09-20","2026-09-25"],["2026-10-06","2026-10-10"],["2026-10-12","2026-10-15"]],"huge-6-bed-5-bath-historic-savannah-home":[["2026-07-25","2026-08-07"],["2026-08-09","2026-08-20"],["2026-08-22","2026-08-26"],["2026-09-02","2026-09-03"],["2026-09-06","2026-09-08"],["2026-09-10","2026-09-19"],["2026-09-20","2026-09-25"],["2026-09-27","2026-10-15"],["2027-01-03","2027-01-05"]],"beautiful-3bed-townhome-in-historic-downtown-savannah":[["2026-07-25","2026-07-28"],["2026-08-04","2026-08-10"],["2026-08-11","2026-08-12"],["2026-08-15","2026-08-20"],["2026-08-24","2026-08-26"],["2026-08-29","2026-09-02"],["2026-09-09","2026-09-11"],["2026-09-13","2026-09-16"],["2026-09-18","2026-09-20"],["2026-09-21","2026-09-22"],["2026-10-04","2026-10-07"],["2026-10-18","2026-10-24"],["2026-10-27","2026-10-29"],["2026-11-05","2026-11-06"],["2026-11-15","2026-11-19"],["2026-12-13","2026-12-15"],["2026-12-24","2027-01-02"]],"107-e-waldburg":[["2026-07-29","2026-07-31"],["2026-08-03","2026-11-28"],["2026-12-27","2026-12-30"]]};
+  (function(){var t=new Date().toISOString().slice(0,10);var hin=document.getElementById('hin'),hout=document.getElementById('hout');hin.min=t;hout.min=t;
+    hin.addEventListener('change',()=>{if(hin.value){hout.min=hin.value;if(hout.value&&hout.value<=hin.value)hout.value='';}});})();
+  function overlaps(inD,outD,blocked){for(var i=0;i<blocked.length;i++){if(inD<blocked[i][1]&&outD>blocked[i][0])return true;}return false;}
   function findHomes(e){e.preventDefault();
     var g=parseInt(document.getElementById('hguests').value,10)||1;
+    var inD=document.getElementById('hin').value, outD=document.getElementById('hout').value;
+    var useDates=!!(inD&&outD&&outD>inD);
     var cards=[...document.querySelectorAll('.homes .card')],shown=0;
-    cards.forEach(c=>{var ok=(parseInt(c.dataset.sleeps,10)||0)>=g;c.style.display=ok?'':'none';if(ok)shown++;});
+    cards.forEach(c=>{
+      var sleepsOk=(parseInt(c.dataset.sleeps,10)||0)>=g;
+      var datesOk=!useDates||!overlaps(inD,outD,HOMES_AVAIL[c.dataset.slug]||[]);
+      var ok=sleepsOk&&datesOk;
+      c.style.display=ok?'':'none'; if(ok)shown++;
+    });
     var note=document.getElementById('filterNote');
-    note.textContent=shown?('Showing '+shown+' home'+(shown>1?'s':'')+' that sleep '+g+'+ — clear filter'):'No homes sleep that many — clear filter';
+    var when=useDates?(' for '+new Date(inD+'T12:00').toLocaleDateString('en-US',{month:'short',day:'numeric'})+' – '+new Date(outD+'T12:00').toLocaleDateString('en-US',{month:'short',day:'numeric'})):'';
+    note.textContent=shown?('Showing '+shown+' of '+cards.length+' home'+(cards.length>1?'s':'')+' available'+when+', sleeping '+g+'+ — clear filter'):('No homes available'+when+' for '+g+'+ guests — clear filter');
     note.style.display='block';
     document.getElementById('homes').scrollIntoView({behavior:'smooth'});
     return false;}
-  function clearHomes(){document.querySelectorAll('.homes .card').forEach(c=>c.style.display='');document.getElementById('filterNote').style.display='none';document.getElementById('hguests').selectedIndex=0;}
+  function clearHomes(){document.querySelectorAll('.homes .card').forEach(c=>c.style.display='');document.getElementById('filterNote').style.display='none';document.getElementById('hguests').selectedIndex=0;document.getElementById('hin').value='';document.getElementById('hout').value='';}
   document.addEventListener('click',e=>{if(e.target&&e.target.id==='filterNote')clearHomes();});
 </script>
 </body></html>

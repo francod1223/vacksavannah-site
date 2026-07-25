@@ -33,11 +33,14 @@
   .hero .wrap{width:100%;position:relative;z-index:2}
   .hero h1{font-size:clamp(46px,7vw,88px);line-height:1.02;max-width:14ch;margin:18px 0 20px}
   .hero p.sub{font-size:19px;max-width:44ch;opacity:.95}
-  .search{margin-top:38px;display:inline-flex;flex-wrap:wrap;background:rgba(255,255,255,.96);color:var(--ink);border-radius:3px;overflow:hidden;box-shadow:0 20px 50px rgba(0,0,0,.25)}
-  .search .f{padding:16px 22px;border-right:1px solid var(--line);min-width:150px}
-  .search .f label{display:block;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
-  .search .f input,.search .f select{border:0;background:transparent;font-family:inherit;font-size:15px;color:var(--ink);width:100%;outline:none}
-  .search .go{background:var(--green);color:#fff;border:0;padding:0 34px;font:inherit;font-size:13px;letter-spacing:.16em;text-transform:uppercase;cursor:pointer}
+  .search{margin-top:38px;display:inline-flex;flex-wrap:wrap;background:rgba(255,255,255,.96);color:var(--ink);border-radius:3px;box-shadow:0 20px 50px rgba(0,0,0,.25)}
+  .search .f{padding:16px 20px;border-right:1px solid var(--line);min-width:118px}
+  .search .f-where{min-width:100px}
+  .search .f label{display:block;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:4px;white-space:nowrap}
+  .search .f input,.search .f select{border:0;background:transparent;font-family:inherit;font-size:15px;color:var(--ink);width:100%;outline:none;white-space:nowrap}
+  .search .f input[type=date]{min-width:128px}
+  .search .go{background:var(--green);color:#fff;border:0;padding:0 34px;font:inherit;font-size:13px;letter-spacing:.16em;text-transform:uppercase;cursor:pointer;border-radius:0 3px 3px 0}
+  @media(max-width:700px){.search{border-radius:8px}.search .f{border-right:0;border-bottom:1px solid var(--line);flex:1 1 45%}.search .go{width:100%;padding:16px;border-radius:0 0 8px 8px}}
   .search-note{margin-top:14px;color:#f3ead9;font-size:13.5px;letter-spacing:.02em}
   .filter-note{display:none;margin-top:10px;color:var(--gold);font-size:14px;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
   .intro{text-align:center;padding:110px 0 30px}.intro h2{font-size:clamp(30px,4vw,46px);max-width:20ch;margin:14px auto 20px}.intro p{max-width:56ch;margin:0 auto;color:var(--muted);font-size:17px}
@@ -74,8 +77,8 @@
   .pp .desc{white-space:pre-line;color:#413b34;font-size:16px;border-top:1px solid var(--line);padding-top:26px;margin-top:8px}
   .pp h2{font-size:30px;margin:40px 0 16px}
   .amen{display:flex;flex-wrap:wrap;gap:10px}.amen span{font-size:13px;border:1px solid var(--line);background:#fff;padding:8px 14px;border-radius:20px;color:var(--muted)}
-  .rev-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
-  .rev{background:#fff;border:1px solid var(--line);border-radius:5px;padding:22px 24px}
+  .rev-grid{column-count:2;column-gap:22px}
+  .rev{background:#fff;border:1px solid var(--line);border-radius:5px;padding:22px 24px;break-inside:avoid;margin-bottom:22px}
   .rev .top{display:flex;justify-content:space-between;font-size:14px;color:var(--muted);margin-bottom:10px}.rev .top b{color:var(--ink);font-weight:500}
   .rev p{font-size:14.5px;color:#453f38}
   .rev-more{margin-top:24px}
@@ -96,7 +99,7 @@
   .book-card .price{font-size:30px;font-family:'Cormorant Garamond',serif}.book-card .price small{font-size:15px;color:var(--muted);font-family:'Inter'}
   .book-card .note{color:var(--muted);font-size:14px;margin:8px 0 20px}
   .book-card .re{text-align:center;color:var(--muted);font-size:13px;margin-top:14px}
-  #hostaway-calendar-widget{margin-top:4px}
+  #hostaway-calendar-widget{margin:8px auto 0;max-width:330px}
   /* stack the widget's Clear / Book now buttons so they never overlap in the narrow card */
   #hostaway-calendar-widget [class*="ButtonContainer"]{flex-direction:column-reverse !important;gap:12px !important;align-items:stretch !important}
   #hostaway-calendar-widget [class*="ButtonContainer"]>*{width:100% !important;min-width:0 !important;margin:0 !important}
@@ -105,7 +108,7 @@
   .lb.open{display:flex}.lb img{max-width:88vw;max-height:86vh;border-radius:4px}
   .lb .x,.lb .nav-b{position:absolute;background:rgba(255,255,255,.14);color:#fff;border:0;width:48px;height:48px;border-radius:50%;font-size:22px;cursor:pointer}
   .lb .x{top:24px;right:28px}.lb .prev{left:26px;top:50%}.lb .next{right:26px;top:50%}.lb .count{position:absolute;bottom:24px;color:#fff;opacity:.8;font-size:14px}
-  @media(max-width:900px){.grid,.diff .grid4{grid-template-columns:repeat(2,1fr)}.story .row,.pp-body,.rev-grid{grid-template-columns:1fr}.gallery{grid-template-columns:1fr;grid-template-rows:none;height:auto}.g-main{height:280px}.g-s{height:150px}nav .links{display:none}.book-card{position:static}}
+  @media(max-width:900px){.grid,.diff .grid4{grid-template-columns:repeat(2,1fr)}.story .row,.pp-body{grid-template-columns:1fr}.rev-grid{column-count:1}.gallery{grid-template-columns:1fr;grid-template-rows:none;height:auto}.g-main{height:280px}.g-s{height:150px}nav .links{display:none}.book-card{position:static}}
   @media(max-width:600px){.grid{grid-template-columns:1fr}.search .f{border-right:0;border-bottom:1px solid var(--line)}}
 </style></head><body>
   <nav class="solid">
