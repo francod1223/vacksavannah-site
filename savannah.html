@@ -109,10 +109,16 @@
   #hostaway-calendar-widget [class*="ButtonContainer"]{flex-direction:column-reverse !important;gap:12px !important;align-items:stretch !important}
   #hostaway-calendar-widget [class*="ButtonContainer"]>*{width:100% !important;min-width:0 !important;margin:0 !important}
   /* lightbox */
-  .lb{position:fixed;inset:0;z-index:70;display:none;background:rgba(20,16,12,.92);align-items:center;justify-content:center}
-  .lb.open{display:flex}.lb img{max-width:88vw;max-height:86vh;border-radius:4px}
-  .lb .x,.lb .nav-b{position:absolute;background:rgba(255,255,255,.14);color:#fff;border:0;width:48px;height:48px;border-radius:50%;font-size:22px;cursor:pointer}
-  .lb .x{top:24px;right:28px}.lb .prev{left:26px;top:50%}.lb .next{right:26px;top:50%}.lb .count{position:absolute;bottom:24px;color:#fff;opacity:.8;font-size:14px}
+  .lb{position:fixed;inset:0;z-index:70;display:none;background:rgba(20,16,12,.92)}
+  .lb.open{display:block}
+  .lb-viewport{position:absolute;inset:0;overflow:hidden;touch-action:pan-y}
+  .lb-track{position:absolute;top:0;left:0;height:100%;display:flex;will-change:transform}
+  .lb-slide{height:100%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+  .lb-slide img{max-width:88%;max-height:86%;border-radius:4px;-webkit-user-drag:none;user-select:none;pointer-events:none}
+  .lb .x,.lb .nav-b{position:absolute;z-index:2;background:rgba(255,255,255,.14);color:#fff;border:0;width:48px;height:48px;border-radius:50%;font-size:22px;cursor:pointer}
+  .lb .x{top:24px;right:28px}.lb .prev{left:26px;top:50%;transform:translateY(-50%)}.lb .next{right:26px;top:50%;transform:translateY(-50%)}
+  .lb .count{position:absolute;z-index:2;bottom:24px;left:50%;transform:translateX(-50%);color:#fff;opacity:.8;font-size:14px}
+  @media(max-width:700px){.lb .prev,.lb .next{display:none}}
   @media(max-width:900px){.grid,.diff .grid4{grid-template-columns:repeat(2,1fr)}.story .row,.pp-body{grid-template-columns:1fr}.rev-grid{column-count:1}.gallery{grid-template-columns:1fr;grid-template-rows:none;height:auto}.g-main{height:280px}.g-s{height:150px}nav .links{display:none}.book-card{position:static;order:-1;margin-bottom:8px}}
   @media(max-width:600px){.grid{grid-template-columns:1fr}.search .f{border-right:0;border-bottom:1px solid var(--line)}}
 
