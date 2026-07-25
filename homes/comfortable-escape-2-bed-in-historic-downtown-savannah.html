@@ -100,6 +100,13 @@
   .book-card .note{color:var(--muted);font-size:14px;margin:8px 0 20px}
   .book-card .re{text-align:center;color:var(--muted);font-size:13px;margin-top:14px}
   #hostaway-calendar-widget{margin:8px auto 0;max-width:330px}
+  /* HostAway's widget switches its month-nav row to a wider (400px) internal layout above
+     some viewport breakpoint, with the Next arrow's left offset hardcoded for that width —
+     it then overflows any narrower container (ours) since every ancestor is overflow:visible.
+     Pin the compact geometry permanently so it never depends on the visitor's screen width. */
+  #hostaway-calendar-widget [class*="styled__Wrapper-sc-1lawy22"]{width:280px !important;margin:0 auto !important}
+  #hostaway-calendar-widget [class*="styled__Prev-sc-1lawy22"]{left:0 !important;right:auto !important}
+  #hostaway-calendar-widget [class*="styled__Next-sc-1lawy22"]{left:220px !important;right:auto !important}
   /* stack the widget's Clear / Book now buttons so they never overlap in the narrow card */
   #hostaway-calendar-widget [class*="ButtonContainer"]{flex-direction:column-reverse !important;gap:12px !important;align-items:stretch !important}
   #hostaway-calendar-widget [class*="ButtonContainer"]>*{width:100% !important;min-width:0 !important;margin:0 !important}
