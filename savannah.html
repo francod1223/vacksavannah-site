@@ -95,19 +95,20 @@
   .rev-modal .rm-body .rev{margin-top:18px}
   .book-card{position:sticky;top:96px;align-self:start;background:#fff;border:1px solid var(--line);border-radius:8px;padding:28px;box-shadow:0 14px 34px rgba(36,32,28,.08)}
   .book-card .price{font-size:30px;font-family:'Cormorant Garamond',serif}.book-card .price small{font-size:15px;color:var(--muted);font-family:'Inter'}
-  .book-card .note{color:var(--muted);font-size:14px;margin:8px 0 20px}
+  .book-card .note{color:var(--muted);font-size:14px;margin:12px 0 0}
   .book-card .re{text-align:center;color:var(--muted);font-size:13px;margin-top:14px}
-  #hostaway-calendar-widget{margin:8px auto 0;max-width:330px}
-  /* HostAway's widget switches its month-nav row to a wider (400px) internal layout above
-     some viewport breakpoint, with the Next arrow's left offset hardcoded for that width —
-     it then overflows any narrower container (ours) since every ancestor is overflow:visible.
-     Pin the compact geometry permanently so it never depends on the visitor's screen width. */
-  #hostaway-calendar-widget [class*="styled__Wrapper-sc-1lawy22"]{width:280px !important;margin:0 auto !important}
-  #hostaway-calendar-widget [class*="styled__Prev-sc-1lawy22"]{left:0 !important;right:auto !important}
-  #hostaway-calendar-widget [class*="styled__Next-sc-1lawy22"]{left:220px !important;right:auto !important}
-  /* stack the widget's Clear / Book now buttons so they never overlap in the narrow card */
-  #hostaway-calendar-widget [class*="ButtonContainer"]{flex-direction:column-reverse !important;gap:12px !important;align-items:stretch !important}
-  #hostaway-calendar-widget [class*="ButtonContainer"]>*{width:100% !important;min-width:0 !important;margin:0 !important}
+  .bk-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px}
+  .bk-field label{display:block;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:5px}
+  .bk-field input,.bk-field select{width:100%;border:1px solid var(--line);border-radius:4px;padding:10px 11px;font:inherit;font-size:14px;color:var(--ink);background:#fff}
+  .bk-estimate{min-height:20px;font-size:14.5px;color:var(--ink);margin:14px 0 2px}
+  .bk-estimate b{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:600}
+  .book-btn{display:block;width:100%;margin-top:14px;background:var(--green);color:#fff;border:0;padding:15px;border-radius:4px;font:inherit;font-size:13px;letter-spacing:.14em;text-transform:uppercase;cursor:pointer}
+  .bookframe{position:fixed;inset:0;z-index:80;display:none;flex-direction:column;background:var(--ivory)}
+  .bookframe.open{display:flex}
+  .bf-bar{height:58px;display:flex;align-items:center;gap:18px;padding:0 20px;background:var(--ink);color:#fff;flex:0 0 auto}
+  .bf-bar button{background:transparent;border:1px solid rgba(255,255,255,.5);color:#fff;padding:8px 16px;border-radius:2px;font:inherit;font-size:13px;cursor:pointer}
+  .bf-bar .bf-brand{font-family:'Cormorant Garamond',serif;font-size:20px;letter-spacing:.05em}
+  .bookframe iframe{flex:1;width:100%;border:0}
   /* lightbox */
   .lb{position:fixed;inset:0;z-index:70;display:none;background:rgba(20,16,12,.92)}
   .lb.open{display:block}
