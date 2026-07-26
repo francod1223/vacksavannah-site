@@ -99,12 +99,25 @@
   .book-card .price{font-size:30px;font-family:'Cormorant Garamond',serif}.book-card .price small{font-size:15px;color:var(--muted);font-family:'Inter'}
   .book-card .note{color:var(--muted);font-size:14px;margin:12px 0 0}
   .book-card .re{text-align:center;color:var(--muted);font-size:13px;margin-top:14px}
-  .bk-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px}
   .bk-field label{display:block;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:5px}
-  .bk-field input,.bk-field select{width:100%;border:1px solid var(--line);border-radius:4px;padding:10px 11px;font:inherit;font-size:14px;color:var(--ink);background:#fff}
-  .bk-estimate{min-height:20px;font-size:14.5px;color:var(--ink);margin:14px 0 2px}
+  .bk-field select{width:100%;border:1px solid var(--line);border-radius:4px;padding:10px 11px;font:inherit;font-size:14px;color:var(--ink);background:#fff}
+  .bk-dates{font-size:13.5px;color:var(--muted);margin:14px 0 8px}.bk-dates b{color:var(--ink);font-weight:500}
+  .cal-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+  .cal-head span{font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:600}
+  .cal-head button{background:none;border:1px solid var(--line);border-radius:50%;width:26px;height:26px;cursor:pointer;font-size:14px;color:var(--ink);line-height:1}
+  .cal-head button:disabled{opacity:.3;cursor:default}
+  .cal-dow{display:grid;grid-template-columns:repeat(7,1fr);text-align:center;font-size:10px;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);margin-bottom:3px}
+  .cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:2px}
+  .cal-day{aspect-ratio:1;border:0;background:none;font:inherit;font-size:12.5px;color:var(--ink);cursor:pointer;border-radius:4px}
+  .cal-day:hover:not(:disabled){background:var(--line)}
+  .cal-day:disabled{color:#cfc8b8;text-decoration:line-through;cursor:default}
+  .cal-day.cal-start,.cal-day.cal-end{background:var(--green);color:#fff}
+  .cal-day.cal-in-range{background:#ece5d4}
+  .cal-clear{background:none;border:0;color:var(--muted);font-size:12.5px;text-decoration:underline;cursor:pointer;padding:6px 0 0;text-underline-offset:2px}
+  .bk-estimate{min-height:20px;font-size:14.5px;color:var(--ink);margin:12px 0 2px}
   .bk-estimate b{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:600}
   .book-btn{display:block;width:100%;margin-top:14px;background:var(--green);color:#fff;border:0;padding:15px;border-radius:4px;font:inherit;font-size:13px;letter-spacing:.14em;text-transform:uppercase;cursor:pointer}
+  .book-btn:disabled{background:var(--line);color:var(--muted);cursor:not-allowed}
   .bookframe{position:fixed;inset:0;z-index:80;display:none;flex-direction:column;background:var(--ivory)}
   .bookframe.open{display:flex}
   .bf-bar{height:58px;display:flex;align-items:center;gap:18px;padding:0 20px;background:var(--ink);color:#fff;flex:0 0 auto}
@@ -197,13 +210,12 @@ We only stayed for one night, but regretted we didn’t have more time to stay h
       </div>
       <aside class="book-card">
         <div class="price">$129 <small>/ night</small></div>
-        <div class="bk-row">
-          <div class="bk-field"><label>Check-in</label><input type="date" id="bkIn"></div>
-          <div class="bk-field"><label>Check-out</label><input type="date" id="bkOut"></div>
-        </div>
-        <div class="bk-field" style="margin-top:10px"><label>Guests</label><select id="bkGuests"><option value="1">1 guest</option><option value="2">2 guests</option><option value="3">3 guests</option><option value="4">4 guests</option><option value="5">5 guests</option><option value="6">6 guests</option></select></div>
+        <div class="bk-dates" id="bkDates">Select your dates below</div>
+        <div id="calBody"></div>
+        <button type="button" class="cal-clear" id="calClearBtn" onclick="calClear()" style="display:none">Clear dates</button>
+        <div class="bk-field" style="margin-top:14px"><label>Guests</label><select id="bkGuests"><option value="1">1 guest</option><option value="2">2 guests</option><option value="3">3 guests</option><option value="4">4 guests</option><option value="5">5 guests</option><option value="6">6 guests</option></select></div>
         <p class="bk-estimate" id="bkEstimate"></p>
-        <button class="book-btn" onclick="openBookingFrame()">Check availability &amp; book</button>
+        <button class="book-btn" id="bkBtn" onclick="openBookingFrame()" disabled>Check availability &amp; book</button>
         <p class="note">Free self check-in. Final total confirmed at checkout.</p>
         <p class="re">★ 4.6 · 270 reviews · Instant confirmation</p>
       </aside>
@@ -278,36 +290,71 @@ We only stayed for one night, but regretted we didn’t have more time to stay h
     });
   })();
   const RATES={"2026-07-31":485,"2026-08-07":475,"2026-08-08":474,"2026-08-09":224,"2026-08-20":171,"2026-08-21":312,"2026-08-22":324,"2026-08-23":129,"2026-08-24":129,"2026-08-25":129,"2026-08-26":129,"2026-08-27":214,"2026-08-28":489,"2026-08-29":484,"2026-08-30":176,"2026-08-31":129,"2026-09-01":129,"2026-09-03":259,"2026-09-04":807,"2026-09-05":831,"2026-09-08":160,"2026-09-09":170,"2026-09-19":741,"2026-09-25":786,"2026-09-26":782,"2026-09-27":247,"2026-09-28":168,"2026-09-29":145,"2026-09-30":166,"2026-10-01":370,"2026-10-02":817,"2026-10-03":792,"2026-10-04":307,"2026-10-05":273,"2026-10-10":767,"2026-10-11":464,"2026-10-15":464,"2026-10-16":1013,"2026-10-17":1022,"2026-10-18":338,"2026-10-19":204,"2026-10-20":180,"2026-10-21":269,"2026-10-22":452,"2026-10-23":1072,"2026-10-24":1026,"2026-10-25":344,"2026-10-26":278,"2026-10-27":260,"2026-10-28":210,"2026-10-29":417,"2026-10-30":974,"2026-10-31":943,"2026-11-01":316,"2026-11-02":221,"2026-11-03":208,"2026-11-04":209,"2026-11-05":413,"2026-11-06":966,"2026-11-07":982,"2026-11-08":330,"2026-11-09":189,"2026-11-10":409,"2026-11-11":410,"2026-11-12":582,"2026-11-13":957,"2026-11-14":941,"2026-11-15":283,"2026-11-16":218,"2026-11-17":204,"2026-11-18":205,"2026-11-19":322,"2026-11-20":719,"2026-11-21":656,"2026-11-22":362,"2026-11-23":314,"2026-11-24":332,"2026-11-25":439,"2026-11-26":565,"2026-11-27":927,"2026-11-28":894,"2026-11-29":232,"2026-11-30":175,"2026-12-01":173,"2026-12-02":218,"2026-12-03":300,"2026-12-04":623,"2026-12-05":578,"2026-12-06":266,"2026-12-07":159,"2026-12-08":152,"2026-12-09":155,"2026-12-10":251,"2026-12-11":550,"2026-12-12":554,"2026-12-13":220,"2026-12-14":180,"2026-12-15":171,"2026-12-16":178,"2026-12-17":255,"2026-12-18":496,"2026-12-19":574,"2026-12-20":423,"2026-12-21":366,"2026-12-22":367,"2026-12-23":468,"2026-12-24":612,"2026-12-25":1054,"2026-12-26":1084,"2026-12-27":601,"2026-12-28":497,"2026-12-29":457,"2026-12-30":592,"2026-12-31":752,"2027-01-01":1040,"2027-01-02":1041,"2027-01-03":286,"2027-01-04":259,"2027-01-05":244,"2027-01-06":228,"2027-01-07":259,"2027-01-08":556,"2027-01-09":507,"2027-01-10":233,"2027-01-11":174,"2027-01-12":159,"2027-01-13":170,"2027-01-14":284,"2027-01-15":788,"2027-01-16":789,"2027-01-17":470,"2027-01-18":191,"2027-01-19":174,"2027-01-20":179,"2027-01-21":296,"2027-01-22":603}, BLOCKED=[["2026-07-26","2026-07-31"],["2026-08-01","2026-08-07"],["2026-08-10","2026-08-20"],["2026-09-02","2026-09-03"],["2026-09-06","2026-09-08"],["2026-09-10","2026-09-19"],["2026-09-20","2026-09-25"],["2026-10-06","2026-10-10"],["2026-10-12","2026-10-15"]], LISTING_ID=56820;
-  function bkOverlapsBlocked(inD,outD){for(var i=0;i<BLOCKED.length;i++){if(inD<BLOCKED[i][1]&&outD>BLOCKED[i][0])return true;}return false;}
+  const TODAY_KEY=new Date().toISOString().slice(0,10);
+  let calView=new Date(); calView.setDate(1);
+  let selIn=null, selOut=null;
+  function pad2(n){return n<10?'0'+n:''+n;}
+  function keyOf(y,m,day){return y+'-'+pad2(m+1)+'-'+pad2(day);}
+  function isBlockedKey(key){for(var i=0;i<BLOCKED.length;i++){if(key>=BLOCKED[i][0]&&key<BLOCKED[i][1])return true;}return false;}
+  function hasBlockedBetween(a,b){for(var i=0;i<BLOCKED.length;i++){if(BLOCKED[i][0]>a&&BLOCKED[i][0]<b)return true;}return false;}
+  function fmt(key){var p=key.split('-');return new Date(+p[0],+p[1]-1,+p[2]).toLocaleDateString('en-US',{month:'short',day:'numeric'});}
+  function renderCal(){
+    var y=calView.getFullYear(), m=calView.getMonth();
+    var startDow=new Date(y,m,1).getDay();
+    var daysInMonth=new Date(y,m+1,0).getDate();
+    var monthName=calView.toLocaleDateString('en-US',{month:'long',year:'numeric'});
+    var isCurrentMonth=(y===(new Date()).getFullYear()&&m===(new Date()).getMonth());
+    var html='<div class="cal-head"><button type="button" onclick="calNav(-1)"'+(isCurrentMonth?' disabled':'')+'>‹</button><span>'+monthName+'</span><button type="button" onclick="calNav(1)">›</button></div>';
+    html+='<div class="cal-dow">'+['Su','Mo','Tu','We','Th','Fr','Sa'].map(function(x){return '<span>'+x+'</span>';}).join('')+'</div>';
+    html+='<div class="cal-grid">';
+    for(var i=0;i<startDow;i++) html+='<span></span>';
+    for(var day=1; day<=daysInMonth; day++){
+      var key=keyOf(y,m,day);
+      var disabled=(key<TODAY_KEY)||isBlockedKey(key);
+      var cls='cal-day';
+      if(selIn&&key===selIn)cls+=' cal-start';
+      if(selOut&&key===selOut)cls+=' cal-end';
+      if(selIn&&selOut&&key>selIn&&key<selOut)cls+=' cal-in-range';
+      html+='<button type="button" class="'+cls+'" data-key="'+key+'" '+(disabled?'disabled':'')+'>'+day+'</button>';
+    }
+    html+='</div>';
+    document.getElementById('calBody').innerHTML=html;
+    [].forEach.call(document.querySelectorAll('.cal-day[data-key]:not(:disabled)'),function(btn){
+      btn.addEventListener('click',function(){calPick(btn.getAttribute('data-key'));});
+    });
+    var datesEl=document.getElementById('bkDates');
+    if(selIn&&selOut)datesEl.innerHTML='<b>'+fmt(selIn)+'</b> → <b>'+fmt(selOut)+'</b>';
+    else if(selIn)datesEl.innerHTML='<b>'+fmt(selIn)+'</b> → select check-out';
+    else datesEl.textContent='Select your dates below';
+    document.getElementById('calClearBtn').style.display=selIn?'':'none';
+    bkUpdateEstimate();
+  }
+  function calNav(n){calView.setMonth(calView.getMonth()+n);renderCal();}
+  function calPick(key){
+    if(!selIn||(selIn&&selOut)||key<=selIn){selIn=key;selOut=null;}
+    else if(hasBlockedBetween(selIn,key)){selIn=key;selOut=null;}
+    else{selOut=key;}
+    renderCal();
+  }
+  function calClear(){selIn=null;selOut=null;renderCal();}
   function bkUpdateEstimate(){
-    var inD=document.getElementById('bkIn').value, outD=document.getElementById('bkOut').value;
-    var el=document.getElementById('bkEstimate');
-    if(!inD||!outD||outD<=inD){el.textContent='';return;}
-    if(bkOverlapsBlocked(inD,outD)){el.innerHTML='<span style="color:#a33">Not available for these dates</span>';return;}
-    var nights=Math.round((new Date(outD+'T00:00')-new Date(inD+'T00:00'))/864e5);
+    var el=document.getElementById('bkEstimate'), btn=document.getElementById('bkBtn');
+    if(!selIn||!selOut){el.textContent='';btn.disabled=true;return;}
+    var nights=Math.round((new Date(selOut+'T00:00')-new Date(selIn+'T00:00'))/864e5);
     var total=0,missing=false;
-    for(var dt=new Date(inD+'T00:00');dt<new Date(outD+'T00:00');dt.setDate(dt.getDate()+1)){
+    for(var dt=new Date(selIn+'T00:00');dt<new Date(selOut+'T00:00');dt.setDate(dt.getDate()+1)){
       var key=dt.toISOString().slice(0,10);
       if(RATES[key])total+=RATES[key];else missing=true;
     }
     var label=nights+' night'+(nights>1?'s':'');
     el.innerHTML=total>0?(label+' · <b>~$'+total.toLocaleString()+'</b> estimated'+(missing?' <span style="color:var(--muted)">(partial)</span>':'')+' — final total at checkout'):label;
+    btn.disabled=false;
   }
-  (function(){
-    var t=new Date().toISOString().slice(0,10);
-    var bin=document.getElementById('bkIn'),bout=document.getElementById('bkOut');
-    bin.min=t;bout.min=t;
-    bin.addEventListener('change',function(){if(bin.value){bout.min=bin.value;if(bout.value&&bout.value<=bin.value)bout.value='';}bkUpdateEstimate();});
-    bout.addEventListener('change',bkUpdateEstimate);
-  })();
+  renderCal();
   function openBookingFrame(){
-    var inD=document.getElementById('bkIn').value, outD=document.getElementById('bkOut').value, guests=document.getElementById('bkGuests').value;
-    var url="https://rethink.holidayfuture.com/"+'listings/'+LISTING_ID;
-    var params=[];
-    if(inD)params.push('start='+inD);
-    if(outD)params.push('end='+outD);
-    if(guests)params.push('numberOfGuests='+guests);
-    if(params.length)url+='?'+params.join('&');
+    if(!selIn||!selOut)return;
+    var guests=document.getElementById('bkGuests').value;
+    var url="https://rethink.holidayfuture.com/"+'listings/'+LISTING_ID+'?start='+selIn+'&end='+selOut+'&numberOfGuests='+guests;
     document.getElementById('bfi').src=url;
     document.getElementById('bf').classList.add('open');
     document.body.style.overflow='hidden';
