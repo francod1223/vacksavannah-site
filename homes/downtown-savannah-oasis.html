@@ -347,7 +347,7 @@ We only stayed for one night, but regretted we didn’t have more time to stay h
   function openBookingFrame(){
     if(!selIn||!selOut)return;
     var guests=document.getElementById('bkGuests').value;
-    var url="https://rethink.holidayfuture.com/"+'listings/'+LISTING_ID+'?start='+selIn+'&end='+selOut+'&numberOfGuests='+guests;
+    var url="https://rethink.holidayfuture.com/"+'checkout/'+LISTING_ID+'?start='+selIn+'&end='+selOut+'&numberOfGuests='+guests;
     // In-page iframing was tried and confirmed non-viable on real cross-browser testing:
     // HostAway's checkout depends on a SameSite=lax cookie (NEXT_LOCALE) for its own
     // routing, which modern browsers refuse to set/send inside a cross-origin iframe —
